@@ -22,9 +22,9 @@ Based on this [repo](https://github.com/couchbasedeps/dotnet-tpl35) but with a n
 
 ### Status:
 
-|   Branch   |   Build  |   Tests  |
-| ---------- | -------- | -------- |
-| **master** |[![AppVeyor](https://img.shields.io/appveyor/ci/gavazquez/tpl4unity/master.svg?logo=appveyor)](https://ci.appveyor.com/project/gavazquez/tpl4unity/branch/master) | [![AppVeyor Tests](https://img.shields.io/appveyor/tests/gavazquez/cachedquicklz/master.svg?logo=appveyor)](https://ci.appveyor.com/project/gavazquez/cachedquicklz/branch/master/tests)
+|   Branch   |   Build  |
+| ---------- | -------- |
+| **master** |[![AppVeyor](https://img.shields.io/appveyor/ci/gavazquez/tpl4unity/master.svg?logo=appveyor)](https://ci.appveyor.com/project/gavazquez/tpl4unity/branch/master) |
 
 ---
 

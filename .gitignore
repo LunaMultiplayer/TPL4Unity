@@ -1,0 +1,10 @@
+*.user
+*.userprefs
+.idea/
+.vs/
+obj/
+TPL4Unity/*.csproj.user
+TPL4Unity/bin/*
+TPL4Unity/obj/*
+*.nupkg
+**/[Pp]ackages/*

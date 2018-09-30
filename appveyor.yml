@@ -1,0 +1,88 @@
+# Reference: http://www.appveyor.com/docs/appveyor-yml
+# Notes:
+#   - Indent each level of configuration with 2 spaces. Do not use tabs!
+
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+version: $(smallversion).{build}
+
+# Do not build on tags (GitHub and BitBucket)
+skip_tags: true
+#Do not build if we change any of this files
+skip_commits:
+  files:
+    - '**/*.md'
+    - '**/*.editorconfig'
+    - '**/*.png'
+image: Visual Studio 2017
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+environment:
+  smallversion: 1.0
+  NugetKey:
+    secure: tYPzvkyTyLs55bvneeVzag8tp+r3qjFlRbLcllo4g/g96oMBBxhd+p3wzxZHUvgk
+cache:
+  - packages -> **\packages.config
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}-$(configuration)'
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+configuration:
+ - Debug
+ - Release
+platform: Any CPU
+build:
+  parallel: true
+  verbosity: minimal
+  publish_nuget: true
+before_build:
+  - nuget restore
+after_build:
+#ClientUpdater post build commands
+ - ps: mkdir "$env:appveyor_build_folder\FinalFiles\$env:configuration\TPL4Unity"
+ - ps: xcopy /s/y "$env:appveyor_build_folder\TPL4Unity\bin\$env:configuration\*.*" "$env:appveyor_build_folder\FinalFiles\$env:configuration\TPL4Unity"
+ #7zip everything
+ - ps: 7z a "$env:appveyor_build_folder\TPL4Unity-$env:configuration.zip" "$env:appveyor_build_folder\FinalFiles\$env:configuration\TPL4Unity"
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+artifacts:
+ - path: .\TPL4Unity-$(configuration).zip
+   name: TPL4Unity-$(configuration).zip
+#---------------------------------#
+#     deployment configuration    #
+#---------------------------------#
+
+deploy:
+ - provider: GitHub
+   tag: $(appveyor_build_version)
+   release: TPL4Unity $(appveyor_build_version)
+   description: 'Build $(appveyor_build_version)'
+   artifact: TPL4Unity-$(configuration).zip
+   auth_token:
+    secure: zWJqDvz3LjR2J358JIJKICwghW/DWRzs73KWb3KApTLOreA4c8DN1tos+O3qBMR7
+   draft: false
+   force_update: true
+   on:
+    branch: master
+
+ - provider: NuGet
+   server: #NuGet.org
+   api_key:
+    secure: tYPzvkyTyLs55bvneeVzag8tp+r3qjFlRbLcllo4g/g96oMBBxhd+p3wzxZHUvgk
+   skip_symbols: false
+   symbol_server: #SymbolSource.org
+   artifact: /.*\.nupkg/

@@ -52,7 +52,7 @@ before_build:
 after_build:
 #ClientUpdater post build commands
  - ps: mkdir "$env:appveyor_build_folder\FinalFiles\$env:configuration\TPL4Unity"
- - ps: xcopy /s/y "$env:appveyor_build_folder\TPL4Unity\bin\$env:configuration\*.*" "$env:appveyor_build_folder\FinalFiles\$env:configuration\TPL4Unity"
+ - ps: xcopy /s/y "$env:appveyor_build_folder\System.Threading\bin\$env:configuration\*.*" "$env:appveyor_build_folder\FinalFiles\$env:configuration\TPL4Unity"
  #7zip everything
  - ps: 7z a "$env:appveyor_build_folder\TPL4Unity-$env:configuration.zip" "$env:appveyor_build_folder\FinalFiles\$env:configuration\TPL4Unity"
 #---------------------------------#

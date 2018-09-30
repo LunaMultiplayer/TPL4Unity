@@ -16,6 +16,8 @@
 
 *Backport of the task paralle library for using it on unity*  
 
+This is this [repo](https://github.com/couchbasedeps/dotnet-tpl35) but with a nuget package for easy usage
+
 ---
 
 ### Status:

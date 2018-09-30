@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.nuget.org/packages/CachedQuickLz"><img src="https://img.shields.io/nuget/v/CachedQuickLz.svg?style=flat&logo=nuget" alt="Nuget" /></a>
+  <a href="https://www.nuget.org/packages/CachedQuickLz"><img src="https://img.shields.io/nuget/v/TPL4Unity.svg?style=flat&logo=nuget" alt="Nuget" /></a>
   <a href="../../releases"><img src="https://img.shields.io/github/release/lunamultiplayer/tpl4unity.svg?style=flat&logo=github&logoColor=white" alt="Latest release" /></a>
   <a href="../../releases"><img src="https://img.shields.io/github/downloads/lunamultiplayer/tpl4unity/total.svg?style=flat&logo=github&logoColor=white" alt="Total downloads" /></a>
   <a href="../../"><img src="https://img.shields.io/github/search/lunamultiplayer/tpl4unity/goto.svg?style=flat&logo=github&logoColor=white" alt="Total hits" /></a>
